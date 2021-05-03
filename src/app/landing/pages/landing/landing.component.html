@@ -1,0 +1,67 @@
+<div class="background-image">
+  <!-- Image and text -->
+  <nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand">
+      <img
+        src="../../../../assets/images/ghost.png"
+        width="30"
+        height="30"
+        class="d-inline-block align-top ms-3"
+        alt=""
+      />
+      Galeria Unsplash
+    </span>
+  </nav>
+  <div class="search-bar-container">
+    <!-- Search bar-->
+    <div class="container mb-2 search-bar">
+      <form class="d-flex" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+        <div class="input-group input-group-lg mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Buscar"
+            aria-label="Buscar"
+            aria-describedby="button-addon2"
+            formControlName="searchInput"
+          />
+          <span class="fas fa-search form-control-feedback"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Gallery grid-->
+<div class="container p-3">
+  <div *ngIf="querySearch">
+    <h1>{{ querySearch | titlecase }}</h1>
+    <h4>{{ imagesFound }} imagenes encontradas</h4>
+  </div>
+  <div class="d-flex flex-wrap justify-content-center">
+    <div
+      *ngFor="let image of images"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      (click)="currentImage = image"
+      class="d-flex justify-content-center align-items-center bg-dark m-1"
+    >
+      <img [src]="image.urls.small" [alt]="image.alt_description" />
+    </div>
+    <div *ngIf="images && images.length === 0" class="text-center">
+      <img src="../../../../assets/images/empty-state.png" alt="no results" />
+      <h1>No se han encontrado resultados</h1>
+    </div>
+  </div>
+</div>
+
+<!-- Infinite scroll div -->
+<div
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()"
+></div>
+
+<!-- Modal -->
+<app-image-detail-modal [image]="currentImage"></app-image-detail-modal>

@@ -1,0 +1,40 @@
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 *ngIf="image" class="modal-title" id="exampleModalLabel">
+          Imagen por {{ image.user.name }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="image" class="text-center">
+          <img
+            *ngIf="isScreenSmallerThan()"
+            [src]="image.urls.small"
+            class="m-1"
+            [alt]="image.alt_description"
+          />
+          <img
+            *ngIf="!isScreenSmallerThan()"
+            [src]="image.urls.regular"
+            class="m-1"
+            [alt]="image.alt_description"
+          />
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>

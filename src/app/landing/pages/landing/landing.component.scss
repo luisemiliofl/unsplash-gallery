@@ -1,0 +1,36 @@
+.background-image {
+  height: 35em;
+  background-image: url("../../../../assets/images/background-landing.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.navbar {
+  height: 4em;
+}
+
+.search-bar-container {
+  height: 31em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-control-feedback {
+  position: absolute;
+  z-index: 3;
+  display: block;
+  width: 3em;
+  height: 3em;
+  line-height: 3em;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+  right: 0;
+}
+
+input {
+  border-radius: 0.3rem !important;
+}
