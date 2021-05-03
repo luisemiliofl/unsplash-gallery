@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { PhotoDto } from '../models/photo-dto';
 import { SearchPhotoDto } from '../models/search-photo-dto';
 
@@ -8,7 +9,6 @@ import { SearchPhotoDto } from '../models/search-photo-dto';
   providedIn: 'root',
 })
 export class UnsplashService {
-  private baseUrl: string = 'https://api.unsplash.com';
   constructor(private readonly httpClient: HttpClient) {}
 
   getPhotos(
@@ -26,7 +26,7 @@ export class UnsplashService {
     if (orderBy) {
       params = params.set('order_by', orderBy);
     }
-    return this.httpClient.get<PhotoDto[]>(`${this.baseUrl}/photos`, {
+    return this.httpClient.get<PhotoDto[]>(`${environment.url_base}/photos`, {
       params,
     });
   }
@@ -79,7 +79,7 @@ export class UnsplashService {
       params = params.set('orientation', orientation.toString());
     }
     return this.httpClient.get<SearchPhotoDto>(
-      `${this.baseUrl}/search/photos`,
+      `${environment.url_base}/search/photos`,
       {
         params,
       }
