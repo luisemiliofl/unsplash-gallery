@@ -14,7 +14,6 @@ export class ImageDetailModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.getWindowSize();
-    console.log(this.screenWidth);
   }
 
   getWindowSize() {
