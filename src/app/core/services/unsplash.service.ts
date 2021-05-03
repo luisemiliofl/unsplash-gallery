@@ -16,10 +16,6 @@ export class UnsplashService {
     perPage?: number,
     orderBy?: 'latest' | 'oldest' | 'popular'
   ): Observable<PhotoDto[]> {
-    // const headers = new HttpHeaders({
-    //   'Accept-Version': 'v1',
-    //   Authorization: 'Client-ID RMxltgcLisvzA7iaA2ieIE2R2hdwP9cHlS1ZO6iEYFc',
-    // });
     let params = new HttpParams();
     if (page) {
       params = params.set('page', page.toString());
@@ -57,10 +53,6 @@ export class UnsplashService {
       | undefined,
     orientation?: 'landscape' | 'portrait' | 'squarish' | undefined
   ): Observable<SearchPhotoDto> {
-    // const headers = new HttpHeaders({
-    //   'Accept-Version': 'v1',
-    //   Authorization: 'Client-ID RMxltgcLisvzA7iaA2ieIE2R2hdwP9cHlS1ZO6iEYFc',
-    // });
     let params = new HttpParams();
     if (query) {
       params = params.set('query', query.toString());
